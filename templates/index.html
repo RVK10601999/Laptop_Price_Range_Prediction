@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <style>
+	body,html{
+			background-color: black;
+	}
+	.login{
+		background-color: rgb(0,0,0); /* Fallback color */
+  		background-color: rgba(0,0,0,0); /* Black w/opacity/see-through */
+  		color: lightblue;
+  		font-weight: bold;
+  		position: absolute;
+  		top: 50%;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		z-index: 2;
+  		width: 80%;
+  		height: 99%;
+  		padding: 20px;
+  		text-align: center;
+  		border: none;
+	}
+	*{
+		box-sizing: border-box;
+		font-family: Arial;
+	}
+	.img{
+		background-color: black;
+	}
+	select,button{
+		width: 400px;
+		padding: 10px;
+		margin-right: 12px; 
+		margin-top: 15px;
+		border-radius: 25px;
+
+	}
+	@keyframes example {
+  0%   {color:red; }
+  25%  {color:yellow; }
+  50%  {color:blue; }
+  75%  {color:green;}
+  100% {color:red; }
+}
+
+@keyframes btn {
+  0%   {background-color:red; }
+  25%  {background-color:yellow; }
+  50%  {background-color:blue; }
+  75%  {background-color:green;}
+  100% {background-color:red; }
+}
+@keyframes brdr{
+  0%   {border-color:red; }
+  25%  {border-color:yellow; }
+  50%  {border-color:blue; }
+  75%  {border-color:green;}
+  100% {border-color:red; }
+}
+@keyframes shdw{
+  0%   {text-shadow: 5px 5px 10px red; }
+  25%  {text-shadow: 5px 5px 10px yellow; }
+  50%  {text-shadow: 5px 5px 10px blue; }
+  75%  {text-shadow: 5px 5px 10px green;}
+  100% {text-shadow: 5px 5px 10px red; }
+}
+
+	#title{
+		animation-name: example;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+	}
+	button{
+	animation-name: btn;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;	
+	}
+
+	select{
+		border:2px solid blue;
+		background-color: purple;
+  		transition: .5s text-decoration-color;
+  		color:white;
+  		animation-name: brdr;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;	
+	}
+	select:hover{
+		color: black;
+		background-color: white;
+		box-shadow:0 0 4px rgba(50,50,50,0);
+	}
+	button{
+		background-color: ;
+		border: none;
+		transition: .5s background-color;
+		cursor: pointer;
+  		transition: all 0.3s ease-out;
+	}
+	button:hover{
+		background-color: white;
+		box-shadow:0 0 4px rgba(0,50,50,0.5);
+	}
+
+	body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+}
+.prd{
+	padding: 20px;
+	color : white;
+	font-size: 400%;
+	animation-name: shdw;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;	
+}
+
+h1 {
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 30px;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: white;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+h1:hover{
+	color: #06D85F;
+}
+
+</style>
+</head>
+
+<body>
+<div class="img"></div>
+ <div class="login">
+	<h1 align='center' id = "title">Laptop Price Range Prediction</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<select name="Screen-size" required="required">
+    		<option value="" readonly="true" hidden="true">Select Screen-Size</option>
+    		<option value=13.3>13-ish</option>
+    		<option value=15.6>15-ish</option>
+    		<option value=17.3>17-ish</option>
+    	</select>
+    	<select name="os" required="required">
+    		<option value="" readonly="true" hidden="true">Select Operating System</option>
+    		<option value=1781>Windows 10</option>
+    		<option value=120>DOS</option>
+    		<option value=49>Google</option>
+    		<option value=23>macOS</option>
+    		<option value=10>linux</option>
+    		<option value=5>ubuntu</option>
+    	</select>
+    	<select name="ram" required="required">
+    		<option value="" readonly="true" hidden="true">Select amount of Memory</option>
+    		<option value=4>4GB</option>
+    		<option value=8>8GB</option>
+    		<option value=16>16GB</option>
+    		<option value=32>32GB</option>
+    		<option value=64>64GB</option>
+    	</select>
+    	<select name="gpu" required="required">
+    		<option value="" readonly="true" hidden="true">Select amount of Graphics memory</option>
+    		<option value=.128>128MB</option>
+    		<option value=2.0>2GB</option>
+    		<option value=3.0>3GB</option>
+    		<option value=4.0>4GB</option>
+    		<option value=6.0>6GB</option>
+    		<option value=8.0>8GB</option>
+    		<option value=16.0>16GB</option>
+    	</select>
+    	<select name="fingerprint" required="required">
+    		<option value="" readonly="true" hidden="true">Want Fingerprint?</option>
+    		<option value='1'>Yes</option>
+    		<option value='0'>No</option>
+    	</select>
+    	<select name="touch" required="required">
+    		<option value="" readonly="true" hidden="true">Want touch display?</option>
+    		<option value='1'>Yes</option>
+    		<option value='0'>No</option>
+    	</select>
+    	<select name="width" required="required">
+    		<option value="" readonly="true" hidden="true">Width(Pixels)</option>
+    		<option value=3840>3840px</option>
+    		<option value=2560>2560px</option>
+    		<option value=1920>1920px</option>
+    		<option value=1366>1366px</option>
+    	</select>
+    	<select name="height" required="required">
+    		<option value="" readonly="true" hidden="true">Height(Pixels)</option>
+    		<option value=2160>2160px</option>
+    		<option value=1600>1600px</option>
+    		<option value=1080>1080px</option>
+    		<option value=768>768px</option>
+    	</select>
+    	<select name="usb2" required="required">
+    		<option value="" readonly="true" hidden="true">No. of USB2.0 ports</option>
+    		<option value=2>2</option>
+    		<option value=1>1</option>
+    		<option value=0>None</option>
+    	</select>
+    	<select name="usb3" required="required">
+    		<option value="" readonly="true" hidden="true">No. of USB3.0 ports</option>
+    		<option value=2>2</option>
+    		<option value=1>1</option>
+    		<option value=0>None</option>
+    	</select>
+    	<select name="usbc" required="required">
+    		<option value="" readonly="true" hidden="true">No. of USB-C ports</option>
+    		<option value=2>2</option>
+    		<option value=1>1</option>
+    		<option value=0>None</option>
+    	</select>
+    	<select name="ethernet" required="required">
+    		<option value="" readonly="true" hidden="true">Want an Ethernet port?</option>
+    		<option value=1>Yes</option>
+    		<option value=0>No</option>
+    	</select>
+    	<select name="blth" required="required">
+    		<option value="" readonly="true" hidden="true">Select Bluetooth version</option>
+    		<option value=4.2>4.2</option>
+    		<option value=5.0>5.0</option>
+    		<option value=4.1>4.1</option>
+    		<option value=4.0>4.0</option>
+    		<option value=5.1>5.1</option>
+    	</select>
+    	<select name="strtyp" required="required">
+    		<option value="" readonly="true" hidden="true">Select type of storage</option>
+    		<option value=1>HDD</option>
+    		<option value=2>SSD</option>
+    	</select>
+    	<select name="amst" required="required">
+    		<option value="" readonly="true" hidden="true">Select amount of storage</option>
+    		<option value=2048>2TB</option>
+    		<option value=1024>1TB</option>
+    		<option value=512>512GB</option>
+    		<option value=256>256GB</option>
+    	</select>
+    	<select name="ncrs" required="required">
+    		<option value="" readonly="true" hidden="true">No. of physical cores in your processor</option>
+    		<option value=8>8-cores</option>
+    		<option value=6>6-cores</option>
+    		<option value=4>4-cores</option>
+    	</select>
+    	<select name="thrds" required="required">
+    		<option value="" readonly="true" hidden="true">No. of logical cores in your processor</option>
+    		<option value=16>16-threads</option>
+    		<option value=12>12-threads</option>
+    		<option value=8>8-threads</option>
+    		<option value=4>4-threads</option>
+    	</select>
+    	<select name="bcl" required="required">
+    		<option value="" readonly="true" hidden="true">Base Clock speed</option>
+    		<option value=2.2>2.2-GHz</option>
+    		<option value=1.6>1.6-GHz</option>
+    		<option value=2.4>2.4-GHz</option>
+    		<option value=3.0>3.0-GHz</option>
+    		<option value=3.7>3.7-GHz</option>
+    	</select>
+        <select name="mcl" required="required">
+        	<option value="" readonly="true" hidden="true">Max. Clock speed</option>
+    		<option value=4.1>4.1-GHz</option>
+    		<option value=4.5>4.5-GHz</option>
+    		<option value=5.0>5.0-GHz</option>
+    		<option value=4.2>4.2-GHz</option>
+    		<option value=4.0>4.0-GHz</option>
+    	</select>
+		<select name="pnm" required="required">
+			<option value="" readonly="true" hidden="true">Select size of transistor(LOWER is BETTER)</option>
+    		<option value=14>14-Nanometer Chip</option>
+    		<option value=12>12-Nanometer Chip</option>
+    		<option value=10>10-Nanometer Chip</option>
+    		<option value=7>7-Nanometer Chip</option>
+    	</select>
+    	<br>
+    	<br>
+		<button type='submit' class="button">PREDICT</button>
+    </form>
+   <br>
+   <br>
+   <div class = "prd">{{prediction_text}} </div>
+</div>
+
+</body>
+</html>

@@ -3,7 +3,6 @@ import pickle as pkl
 import numpy as np
 import pandas as pd
 import sklearn
-import xgboost
 app = Flask(__name__)
 mod = pkl.load(open("mod.pkl",'rb'))
 cols = ['size', 'os', 'ram', 'gprm', 'fp', 'Touch_or_not', 'wid', 'hgt', 'usb2','usb3', 'usbc', 'ethr', 'blth', 'strtype', 'amst', 'ncrs', 'thrds','bc', 'mcl', 'pnm']
